@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    deafult: "password"
+    default: "password"
   }
 })
 //Name of the collection that stores user information
