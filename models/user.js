@@ -1,5 +1,5 @@
 //User model
-const mongoose = require('/connection.js')
+const mongoose = require('./connection.js')
 
 //create schema for each user
 const UserSchema = new mongoose.Schema({
@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
   }
 })
 //Name of the collection that stores user information
-const UserCollection = mongoose.model('user', UserCollection);
+const UserCollection = mongoose.model('user', UserSchema);
 
 //Get all users
 const getAllUsers = () => {

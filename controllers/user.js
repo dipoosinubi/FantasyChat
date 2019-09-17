@@ -35,10 +35,43 @@ const userRouter = express.Router()
 /* Step 5
  *
  * TODO: delete this handler; it's just a sample
- */ 
-// GET ALL USERS
-userRouter.get('/', function (req, res) {
-  userAPI.getAllUsers
+ */
+//GET ALL USERS
+userRouter.get('/', (req, res) => {
+  userAPI.getAllUsers().then(users => {
+    res.send(users)
+  })
+})
+
+// CREATE NEW USER
+userRouter.get('/new', (req, res) => {
+  res.send(newUser)
+})
+// EDIT USER
+userRouter.get('/:userId/editUser', function (req, res) {
+  userAPI.getUser(req.params.userId).then(user => {
+    res.send(user)
+  })
+})
+//  GET SINGLE USER
+userRouter.get('/:userId', function (req, res) {
+  userAPI.getUser(req.params.userId).then(user => {
+    res.send(user)
+  })
+})
+// POST NEW USER
+userRouter.post('/user/addUser', (req, res) => {
+  userAPI.addNewUser(req.body)
+    .then( (users) => { res.send(users) })
+})
+// UPDATE NEW USER
+userRouter.put('/:userId', (req, res) => {
+  userAPI.updateUser(req.params.userId, req.body)
+    .then( (user) => { res.send(user) })
+})
+//DELETE USER
+userRouter.delete('/:userId', (req, res) => {
+  userAPI.deleteUser(req.params.userId).then(res.send(users))
 })
 
 /* Step 6

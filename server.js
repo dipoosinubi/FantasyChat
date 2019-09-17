@@ -10,14 +10,14 @@
  */
 const express = require('express')
 const app = express()
-const methodOverride = require('method-override')
+// const methodOverride = require('method-override')
 
 /* Step 2
  * 
  * import routers from controllers/
  *
  */
-const { templateRouter } = require('./controllers/user.js/index.js')
+const { userRouter } = require('./controllers/user.js')
 
 
 /* Step 3
@@ -36,7 +36,7 @@ app.use(express.urlencoded({extended: true}))
  */
 app.use(express.json({strict:false}))
 
-app.use(methodOverride('_method'))
+// app.use(methodOverride('_method'))
 /* Step 3.c
  *
  * use the `./client/build` directory to host static resources such as css and
@@ -50,7 +50,7 @@ app.use(express.static(__dirname+"/public"))
  * add router for the application to use. The first argument is a prefix to all
  * the paths defined in the router.
  */
-app.use('/api/helloworld', templateRouter)
+app.use('/api/users', userRouter)
 
 /* Step 5
  *
