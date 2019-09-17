@@ -36,6 +36,7 @@ const userRouter = express.Router()
  *
  * TODO: delete this handler; it's just a sample
  */ 
+// GET ALL USERS
 userRouter.get('/', function (req, res) {
   userAPI.getAllUsers
 })
