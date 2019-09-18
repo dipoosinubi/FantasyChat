@@ -14,7 +14,7 @@ import {
 
 class NewSportForm extends React.Component {
     state = {
-        sports: {
+        newSport: {
             name: "",
             description: ""
         }
@@ -23,11 +23,12 @@ class NewSportForm extends React.Component {
     handleTextInput = (evnt) => {
         let newSport = { ...this.state.newSport }
         newSport[evnt.target.name] = evnt.target.value
-        this.setState({ newSport })
+        this.setState({ newSport})
     }
 
     handleSubmit = (evnt) => {
         evnt.preventDefault();
+
         this.props.addSport(this.state.newSport)
     }
 
@@ -37,14 +38,16 @@ class NewSportForm extends React.Component {
                 <input
                     type="text"
                     name="name"
+                    // value={this.state.newSportText}
                     onChange={this.handleTextInput}
-                    placeholder="TYPE SPORT NAME"
+                    placeholder="NAME"
                 />
                 <input
                     type="text"
                     name="description"
+                    // value={this.state.newDescriptionText}
                     onChange={this.handleTextInput}
-                    placeholder="TYPE SPORT DESCRIPTION"
+                    placeholder="DESCRIPTION"
                 />
                 <input type="submit" value="ADD SPORT" />
             </form>
@@ -85,7 +88,7 @@ export default class HomePage extends Component {
     // }
     // getAppSport() {
     //     getFirstSport = (sports) => {
-    //         this.setState({ sport: { ...sports } })
+    //         this.setState({ sports })
     //     }
     // }
     // addNewSport = (createdSport) => {
@@ -105,15 +108,15 @@ export default class HomePage extends Component {
         return (
             // <link to='/league'>
             <div >
-                <NewSportForm />
+                <NewSportForm addSport={this.addNewSport}/>
                 {this.state.sports.map((sport) => {
                     return (
                         <Card>
-                            <CardImg top width="100%" src={sport.img} alt="Sport Image" />
+                            {/* <CardImg top width="60%" src={sport.img} alt="Sport Image" /> */}
                             <CardBody>
                                 <CardTitle>{sport.name}</CardTitle>
                                 <CardText>{sport.description}</CardText>
-                                <Button>Button</Button>
+                                <Button>Go To Leagues</Button>
                             </CardBody>
                         </Card>
                     )
@@ -125,3 +128,4 @@ export default class HomePage extends Component {
         );
     }
 }
+
