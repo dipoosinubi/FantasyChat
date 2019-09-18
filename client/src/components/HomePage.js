@@ -2,22 +2,55 @@
  *
  */
 import React, { Component } from 'react'
-// import {
-//     Card, CardImg, CardText, CardBody,
-//     CardTitle, Button
-// } from 'reactstrap';
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, Button
+} from 'reactstrap';
+import { eventNames } from 'cluster';
 /* Step 2
  * Rename this class to reflect the component being created
  *
  */
-const sport = ({name, description}) => 
-(<li>{name} - {description}</li>)
 
-const sportsList = (sports) => (
-    <div>
-        {sports.map(sport)}
-    </div>
-)
+class NewSportForm extends React.Component{
+    state ={
+        sports:{
+            name:"",
+            description:""
+        }
+    }
+    
+    handleTextInput = (evnt) =>{
+        let newSport = {...this.state.newSport}
+        newSport[evnt.target.name] = evnt.target.value
+        this.setState({ newSport })
+    }
+
+     handleSubmit = (evnt) => {
+         evnt.preventDefault();
+         this.props.addSport(this.state.newSport)
+     }
+
+     render(){
+         return (
+             <form onSubmit={this.handleSubmit}>
+                 <input
+                 type="text"
+                 name="name"
+                 onChange={this.handleTextInput}
+                 placeholder="TYPE SPORT NAME"
+                 />
+                 <input
+                 type="text"
+                 name="description"
+                 onChange={this.handleTextInput}
+                 placeholder="TYPE SPORT DESCRIPTION"
+                 />
+             </form>
+         )
+     }
+
+}
 export default class HomePage extends Component {
 
     /* Step 3
@@ -29,10 +62,12 @@ export default class HomePage extends Component {
             {
                 name: "Tests Sport 1"
                 , description: "National Football League"
+                , img:"URL"
             },
             {
                 name: "Test Sport 2"
                 , description: " Nation BasketBall Association"
+                , img: "URL"
             }
         ]
     }
@@ -54,18 +89,22 @@ export default class HomePage extends Component {
     */
     render() {
         return (
-            // <link to='/league'>
+        // <link to='/league'>
    
-            <div >
-                {/* <Card>
-                    <CardImg top width="100%" src="" alt="Sport Image" />
-                    <CardBody>
-                        <CardTitle>{this.state.sports[0].name}</CardTitle>
-                        <CardText>{this.state.sports[0].description}</CardText>
-                        <Button>Button</Button>
-                    </CardBody>
-                </Card> */}
-                {sportsList}
+        <div >
+                {this.state.sports.map((sport) => {
+                    return(
+                        <Card>
+                            <CardImg top width="100%" src={sport.img} alt="Sport Image" />
+                            <CardBody>
+                                <CardTitle>{sport.name}</CardTitle>
+                                <CardText>{sport.description}</CardText>
+                                <Button>Button</Button>
+                            </CardBody>
+                        </Card>
+                    )
+                })
+                }
             </div>
 
             // </link>
