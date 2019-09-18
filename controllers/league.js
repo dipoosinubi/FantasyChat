@@ -15,7 +15,7 @@ const express = require('express')
  * controller you need.
  * 
  */
-const groupAPI = require('../models/groups.js')
+const leagueAPI = require('../models/leagues.js')
 
 /* Step 3 
  * 
@@ -25,7 +25,7 @@ const groupAPI = require('../models/groups.js')
  * TODO: rename this from templateRouter to something that makes sense. (e.g:
  * `shopRouter`)
  */
-const groupRouter = express.Router()
+const leagueRouter = express.Router()
 
 /* Step 4
  * 
@@ -36,31 +36,31 @@ const groupRouter = express.Router()
  *
  * TODO: delete this handler; it's just a sample
  */
-//GET ALL GROUPS
-groupRouter.get('/', (req, res) => {
-  groupAPI.getAllGroups()
-    .then(groups => { res.send(groups) })
+//GET ALL LEAGUES 
+leagueRouter.get('/', (req, res) => {
+  leagueAPI.getAllLeagues()
+    .then(leagues => { res.send(leagues) })
 })
 
 //  GET SINGLE GROUP
-groupRouter.get('/:groupId', (req, res) => {
-  groupAPI.getGroup(req.params.groupId)
-    .then(group => { res.send(group) })
+leagueRouter.get('/:leagueId', (req, res) => {
+  leagueAPI.getLeague(req.params.leagueId)
+    .then(league => { res.send(league) })
 })
-// POST NEW GROUPS
-groupRouter.post('/', (req, res) => {
-  groupAPI.addNewGroup(req.body)
-    .then((groups) => { res.send(groups) })
+// POST NEW LEAGUES 
+leagueRouter.post('/', (req, res) => {
+  leagueAPI.addNewLeague(req.body)
+    .then((leagues) => { res.send(leagues) })
 })
-// UPDATE GROUPS
-groupRouter.put('/:groupId', (req, res) => {
-  groupAPI.updateGroup(req.params.groupId, req.body)
-    .then((group) => { res.send(group) })
+// UPDATE LEAGUES 
+leagueRouter.put('/:leagueId', (req, res) => {
+  leagueAPI.updateGroup(req.params.leagueId, req.body)
+    .then((league) => { res.send(league) })
 })
-//DELETE GROUPS
-groupRouter.delete('/:groupId', (req, res) => {
-  groupAPI.deleteGroup(req.params.groupId)
-    .then( (groups) => { res.send(groups) })
+//DELETE LEAGUES  
+leagueRouter.delete('/:leagueId', (req, res) => {
+  leagueAPI.deleteLeague(req.params.leagueId)
+    .then( (leagues) => { res.send(leagues) })
 })
 
 /* Step 6
@@ -69,5 +69,5 @@ groupRouter.delete('/:groupId', (req, res) => {
  *
  */
 module.exports = {
-  groupRouter
+  leagueRouter
 }

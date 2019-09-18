@@ -18,31 +18,31 @@ const SportsSchema = new mongoose.Schema({
 //Name of the collection that stores sport information
 const SportsCollection = mongoose.model('sport', SportsSchema);
 
-//Get all users
-const getAllUsers = () => {
+//Get all sports
+const getAllSports = () => {
     return SportsCollection.find()
 }
-// Get one User
-const getUser = (userId) => {
-    return SportsCollection.findById(userId)
+// Get one sport
+const getSport = (sportId) => {
+    return SportsCollection.findById(sportId)
 }
-// create a User
-const addNewUser = (newUser) => {
-    return SportsCollection.create(newUser)
+// create a sport
+const addNewSport = (newSport) => {
+    return SportsCollection.create(newSport)
 }
 //Update a specific sport by id
-const updateUser = (userId, updatedUser) => {
-    return SportsCollection.updateOne({ _id: userId }, updatedUser)
+const updateSport = (sportId, updatedSport) => {
+    return SportsCollection.updateOne({ _id: sportId }, updatedSport)
 }
 // Delete a specific sport by Id
-const deleteUser = (userId) => {
-    return SportsCollection.findByIdAndDelete(userId);
+const deleteSport = (sportId) => {
+    return SportsCollection.findByIdAndDelete(sportId);
 }
 // exports all methods
 module.exports = {
-    addNewUser,
-    deleteUser,
-    getAllUsers,
-    getUser,
-    updateUser
+    addNewSport,
+    deleteSport,
+    getAllSports,
+    getSport,
+    updateSport
 }
