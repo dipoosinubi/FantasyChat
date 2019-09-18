@@ -6,49 +6,50 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, Button
 } from 'reactstrap';
-import { eventNames } from 'cluster';
+// import { eventNames } from 'cluster';
 /* Step 2
  * Rename this class to reflect the component being created
  *
  */
 
-class NewSportForm extends React.Component{
-    state ={
-        sports:{
-            name:"",
-            description:""
+class NewSportForm extends React.Component {
+    state = {
+        sports: {
+            name: "",
+            description: ""
         }
     }
-    
-    handleTextInput = (evnt) =>{
-        let newSport = {...this.state.newSport}
+
+    handleTextInput = (evnt) => {
+        let newSport = { ...this.state.newSport }
         newSport[evnt.target.name] = evnt.target.value
         this.setState({ newSport })
     }
 
-     handleSubmit = (evnt) => {
-         evnt.preventDefault();
-         this.props.addSport(this.state.newSport)
-     }
+    handleSubmit = (evnt) => {
+        evnt.preventDefault();
+        this.props.addSport(this.state.newSport)
+    }
 
-     render(){
-         return (
-             <form onSubmit={this.handleSubmit}>
-                 <input
-                 type="text"
-                 name="name"
-                 onChange={this.handleTextInput}
-                 placeholder="TYPE SPORT NAME"
-                 />
-                 <input
-                 type="text"
-                 name="description"
-                 onChange={this.handleTextInput}
-                 placeholder="TYPE SPORT DESCRIPTION"
-                 />
-             </form>
-         )
-     }
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <input
+                    type="text"
+                    name="name"
+                    onChange={this.handleTextInput}
+                    placeholder="TYPE SPORT NAME"
+                />
+                <input
+                    type="text"
+                    name="description"
+                    onChange={this.handleTextInput}
+                    placeholder="TYPE SPORT DESCRIPTION"
+                />
+                <input type="submit" value="ADD SPORT" />
+            </form>
+        )
+    }
 
 }
 export default class HomePage extends Component {
@@ -62,15 +63,15 @@ export default class HomePage extends Component {
             {
                 name: "Tests Sport 1"
                 , description: "National Football League"
-                , img:"URL"
             },
             {
                 name: "Test Sport 2"
                 , description: " Nation BasketBall Association"
-                , img: "URL"
             }
         ]
     }
+
+
 
     /* Step 4
     * Use componentDidMount to retrieve any data to display
@@ -79,7 +80,20 @@ export default class HomePage extends Component {
     *   setState can be run here as well
     *   -REMINDER remember `setState` it is an async function
     */
+    // componentDidMount() {
+    //     this.getAppSport()
+    // }
+    // getAppSport() {
+    //     getFirstSport = (sports) => {
+    //         this.setState({ sport: { ...sports } })
+    //     }
+    // }
+    // addNewSport = (createdSport) => {
+    //     createdSport.sportId = this.state.sports._id
 
+    //     saveSport(createdSport)
+    //         .then(() => this.getAppSport())
+    // }
 
     /* Step 5
     *  The render function manages what is shown in the browser
@@ -89,11 +103,11 @@ export default class HomePage extends Component {
     */
     render() {
         return (
-        // <link to='/league'>
-   
-        <div >
+            // <link to='/league'>
+            <div >
+                <NewSportForm />
                 {this.state.sports.map((sport) => {
-                    return(
+                    return (
                         <Card>
                             <CardImg top width="100%" src={sport.img} alt="Sport Image" />
                             <CardBody>
