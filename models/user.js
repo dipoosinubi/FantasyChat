@@ -8,13 +8,9 @@ const UserSchema = new mongoose.Schema({
     required: true,
     default: "Ballers"
   },
-  name: {
+  message: {
     type: String,
-    default: "Peter Parker",
-  },
-  password: {
-    type: String,
-    default: "password"
+    default: "Can we trade ",
   }
 })
 //Name of the collection that stores user information
