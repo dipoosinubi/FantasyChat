@@ -1,50 +1,51 @@
-//User model
+//Group model
 const mongoose = require('./connection.js')
 
-//create schema for each user
-const UserSchema = new mongoose.Schema({
-  userName: {
-    type: String,
-    required: true,
-    default: "Ballers"
-  },
+//create schema for each Group
+const GroupSchema = new mongoose.Schema({
   name: {
     type: String,
-    default: "Peter Parker",
+    required: true,
+    default: "Fantasy 1",
   },
-  password: {
+  description: {
     type: String,
-    default: "password"
+    default: "Cool fantasy"
+  },
+  players:{
+      type: Number,
+      require: true,
+      default: 10
   }
 })
-//Name of the collection that stores user information
-const UserCollection = mongoose.model('user', UserSchema);
+//Name of the collection that stores group information
+const GroupCollection = mongoose.model('group', GroupSchema);
 
-//Get all users
-const getAllUsers = () => {
-  return UserCollection.find()
+//Get all groups
+const getAllGroups = () => {
+  return GroupCollection.find()
 }
-// Get one User
-const getUser = (userId) => {
-  return UserCollection.findById(userId)
+// Get one group
+const getGroup = (groupId) => {
+  return GroupCollection.findById(groupId)
 }
-// create a User
-const addNewUser = (newUser) => {
-  return UserCollection.create(newUser)
+// create a group
+const addNewGroup = (newGroup) => {
+  return GroupCollection.create(newGroup)
 }
-//Update a specific user by id
-const updateUser = (userId, updatedUser) => {
-  return UserCollection.updateOne({_id:userId}, updatedUser)
+//Update a specific group by id
+const updateGroup = (groupId, updatedGroup) => {
+  return GroupCollection.updateOne({_id:groupId}, updatedGroup)
 }
-// Delete a specific user by Id
-const deleteUser = (userId) => {
-  return UserCollection.findByIdAndDelete(userId);
+// Delete a specific group by Id
+const deleteGroup = (groupId) => {
+  return GroupCollection.findByIdAndDelete(groupId);
 }
 // exports all methods
 module.exports = {
-  addNewUser,
-  deleteUser,
-  getAllUsers,
-  getUser,
-  updateUser
+  addNewGroup,
+  deleteGroup,
+  getAllGroups,
+  getGroup,
+  updateGroup
 }
