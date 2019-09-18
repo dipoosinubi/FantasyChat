@@ -3,7 +3,7 @@ const mongoose = require('./connection.js')
 
 
 //create schema for each sport
-const SportsSchema = new mongoose.Schema({
+const SportSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -13,30 +13,30 @@ const SportsSchema = new mongoose.Schema({
         type: String,
         default: "National Football League",
     },
-    leagues: [leagues]
+    // leagues: [leagues]
 })
 //Name of the collection that stores sport information
-const SportsCollection = mongoose.model('sport', SportsSchema);
+const SportCollection = mongoose.model('sport', SportSchema);
 
 //Get all sports
 const getAllSports = () => {
-    return SportsCollection.find()
+    return SportCollection.find()
 }
 // Get one sport
 const getSport = (sportId) => {
-    return SportsCollection.findById(sportId)
+    return SportCollection.findById(sportId)
 }
 // create a sport
 const addNewSport = (newSport) => {
-    return SportsCollection.create(newSport)
+    return SportCollection.create(newSport)
 }
 //Update a specific sport by id
 const updateSport = (sportId, updatedSport) => {
-    return SportsCollection.updateOne({ _id: sportId }, updatedSport)
+    return SportCollection.updateOne({ _id: sportId }, updatedSport)
 }
 // Delete a specific sport by Id
 const deleteSport = (sportId) => {
-    return SportsCollection.findByIdAndDelete(sportId);
+    return SportCollection.findByIdAndDelete(sportId);
 }
 // exports all methods
 module.exports = {

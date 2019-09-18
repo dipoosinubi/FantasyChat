@@ -1,10 +1,10 @@
 //Group model
 const mongoose = require('./connection.js')
-const mongoose = require('./sports.js')
+const ObjectId = mongoose.Schema.Types.ObjectId
 
 //create schema for each Group
 const LeagueSchema = new mongoose.Schema({
-  sportsId: [sportsId],
+  sportsId: ObjectId,
   name: {
     type: String,
     required: true,
@@ -40,13 +40,13 @@ const updateLeague = (leagueId, updatedLeague) => {
   return LeagueCollection.updateOne({_id:leagueId}, updatedLeague)
 }
 // Delete a specific league by Id
-const deleteGroup = (leagueId) => {
+const deleteLeague = (leagueId) => {
   return LeagueCollection.findByIdAndDelete(leagueId);
 }
 // exports all methods
 module.exports = {
   addNewLeague,
-  deleteGroup,
+  deleteLeague,
   getAllLeagues,
   getLeague,
   updateLeague

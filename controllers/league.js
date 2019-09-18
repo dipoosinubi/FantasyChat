@@ -15,7 +15,7 @@ const express = require('express')
  * controller you need.
  * 
  */
-const leagueAPI = require('../models/leagues.js')
+const leagueAPI = require('../models/league.js')
 
 /* Step 3 
  * 
@@ -54,7 +54,7 @@ leagueRouter.post('/', (req, res) => {
 })
 // UPDATE LEAGUES 
 leagueRouter.put('/:leagueId', (req, res) => {
-  leagueAPI.updateGroup(req.params.leagueId, req.body)
+  leagueAPI.updateLeague(req.params.leagueId, req.body)
     .then((league) => { res.send(league) })
 })
 //DELETE LEAGUES  
