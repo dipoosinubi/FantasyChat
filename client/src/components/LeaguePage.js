@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 import LeagueCard from './leagueCard.js';
 import './leaguepage.css';
 
@@ -85,8 +85,10 @@ export default class LeaguePage extends Component {
             <div className='body'>
                 <h1>All leauges in "Selected Sport" </h1>
                 <NewLeagueForm addLeague={this.addNewLeague} />
-                <Container>
-                    {leagueList}
+                <Container flex className="cardContainer">
+                    {/* <Row> */}
+                        {leagueList}
+                    {/* </Row> */}
                 </Container>
             </div>
         );

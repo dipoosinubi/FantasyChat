@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 export default (league) => (
     <div>
         <Link to={'/sports/:sportsId/leagues/:league/messages'}>
-            <Card>
+            <Card className="leagueCard">
                 <CardBody>
                     <CardTitle>{league.name}</CardTitle>
                     <CardText>{league.description}</CardText>

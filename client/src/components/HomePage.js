@@ -22,26 +22,26 @@ class NewSportForm extends React.Component {
     // componentDidMount() {
     // }
 
-    //  addNewSport =(sport) => {
-    //       fetch('/api/sports',
-    //             {
-    //                 method: 'POST'
-    //                 , headers: { 'Content-Type': 'application/json' }
-    //                 , body: JSON.stringify(sport)
-    //             }
-    //         ).then(response => response.json())
-    //          .then((responseJson) => console.log(responseJson))
-    //          .catch(error => console.log(error));
-    // };
+     addNewSport =(sport) => {
+          fetch('/api/sports',
+                {
+                    method: 'POST'
+                    , headers: { 'Content-Type': 'application/json' }
+                    , body: JSON.stringify(sport)
+                }
+            ).then(response => response.json())
+             .then((responseJson) => console.log(responseJson))
+             .catch(error => console.log(error));
+    };
     //     getAllCoursework = () =>
     //   fetch('/api/sports')
     //     .then(res => res.json())
     //     .catch(() => []) 
 
-    //     handleSubmit = (evnt) => {
-    //         evnt.preventDefault();
-    //         this.addNewSport(this.state.newSport)
-    //     };
+        handleSubmit = (evnt) => {
+            evnt.preventDefault();
+            this.addNewSport(this.state.newSport)
+        };
 
     render() {
         return (
