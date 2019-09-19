@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-// import HomePage from './components/HomePage'
+import HomePage from './components/HomePage'
 import LeaguePage from './components/LeaguePage'
-import MessagePage from './components/MessagePage'
+// import MessagePage from './components/MessagePage'
+// import SportCard from './components/sportCard.js'
 import './App.css';
 
 function App() {
@@ -10,8 +11,9 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          {/* <Route exact path="/" component={HomePage}/> */}
-          <Route exact path="/" component={LeaguePage}/>
+          <Route exact path="/" component={HomePage}/>
+          {/* < Route exact path="/" component={SportCard}/> */}
+          <Route exact path="/sports/:sportsId/leagues" component={LeaguePage}/>
           {/* <Route exact path="/" component={MessagePage}/> */}
         </Switch>
       </Router>

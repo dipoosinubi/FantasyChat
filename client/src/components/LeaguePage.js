@@ -77,7 +77,7 @@ export default class LeaguePage extends Component {
                  <NewLeagueForm addLeague={this.addNewLeague} />
             {this.state.leagues.map((league) => {
                 return (
-                    <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
+                    <Card>
                         {/* <CardImg top width="60%" src={sport.img} alt="Sport Image" /> */}
                         <CardBody>
                             <CardTitle>{league.name}</CardTitle>

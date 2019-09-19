@@ -1,9 +1,7 @@
 
-import React, { Component } from 'react'
-import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, Button
-} from 'reactstrap';
+import React, { Component } from 'react';
+import { Container, Row, Col } from 'reactstrap';
+import SportCard from './sportCard.js'
 
 
 class NewSportForm extends React.Component {
@@ -20,7 +18,7 @@ class NewSportForm extends React.Component {
         this.setState({ newSport })
     }
 
-  
+
     // componentDidMount() {
     // }
 
@@ -35,15 +33,15 @@ class NewSportForm extends React.Component {
     //          .then((responseJson) => console.log(responseJson))
     //          .catch(error => console.log(error));
     // };
-//     getAllCoursework = () =>
-//   fetch('/api/sports')
-//     .then(res => res.json())
-//     .catch(() => []) 
-    
-//     handleSubmit = (evnt) => {
-//         evnt.preventDefault();
-//         this.addNewSport(this.state.newSport)
-//     };
+    //     getAllCoursework = () =>
+    //   fetch('/api/sports')
+    //     .then(res => res.json())
+    //     .catch(() => []) 
+
+    //     handleSubmit = (evnt) => {
+    //         evnt.preventDefault();
+    //         this.addNewSport(this.state.newSport)
+    //     };
 
     render() {
         return (
@@ -77,21 +75,21 @@ export default class HomePage extends Component {
     */
     state = {
         sports: //[]
-        [
-            {
-                name: "Tests Sport 1"
-                , description: "National Football League"
-            },
-            {
-                name: "Test Sport 2"
-                , description: " Nation BasketBall Association"
-            }
-        ]
+            [
+                {
+                    name: "Tests Sport 1"
+                    , description: "National Football League"
+                },
+                {
+                    name: "Test Sport 2"
+                    , description: " Nation BasketBall Association"
+                }
+            ]
     }
     // componentDidMount() {
     //     this.getSports()
     // }
-    
+
     // getSports = () => {
     //    fetch('/api/sports')
     //         .then(res => {
@@ -101,26 +99,28 @@ export default class HomePage extends Component {
     // };
 
     render() {
+         const sportList = this.state.sports.map((sport) => {
+            return (
+                < SportCard
+                    key={sport._id}
+                    sportId={sport._id}
+                    name={sport.name}
+                    description={sport.description}
+                />
+            )
+        })
+
         return (
-            // <link to='/league'>
             <div >
                 <NewSportForm addSport={this.addNewSport} />
-                {this.state.sports.map((sport) => {
-                    return (
-                        <Card>
-                            {/* <CardImg top width="60%" src={sport.img} alt="Sport Image" /> */}
-                            <CardBody>
-                                <CardTitle>{sport.name}</CardTitle>
-                                <CardText>{sport.description}</CardText>
-                                <Button>Go To Leagues</Button>
-                            </CardBody>
-                        </Card>
-                    )
-                })
-                }
+                        <Container fluid>
+                    <Row>
+                        <Col>
+                            {sportList}
+                        </Col>
+                    </Row>
+                </Container>
             </div>
-
-            // </link>
         );
     }
 }
