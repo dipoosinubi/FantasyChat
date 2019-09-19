@@ -18,30 +18,22 @@ class NewSportForm extends React.Component {
         this.setState({ newSport })
     }
 
-
-    // componentDidMount() {
-    // }
-
-     addNewSport =(sport) => {
-          fetch('/api/sports',
-                {
-                    method: 'POST'
-                    , headers: { 'Content-Type': 'application/json' }
-                    , body: JSON.stringify(sport)
-                }
-            ).then(response => response.json())
-             .then((responseJson) => console.log(responseJson))
-             .catch(error => console.log(error));
+    addNewSport = (sport) => {
+        fetch('/api/sports',
+            {
+                method: 'POST'
+                , headers: { 'Content-Type': 'application/json' }
+                , body: JSON.stringify(sport)
+            }
+        ).then(response => response.json())
+            .then((responseJson) => console.log(responseJson))
+            .catch(error => console.log(error));
     };
-    //     getAllCoursework = () =>
-    //   fetch('/api/sports')
-    //     .then(res => res.json())
-    //     .catch(() => []) 
 
-        handleSubmit = (evnt) => {
-            evnt.preventDefault();
-            this.addNewSport(this.state.newSport)
-        };
+    handleSubmit = (evnt) => {
+        evnt.preventDefault();
+        this.addNewSport(this.state.newSport)
+    };
 
     render() {
         return (
@@ -73,8 +65,11 @@ export default class HomePage extends Component {
     * Create a state for the component to store view data
     *
     */
-    state = {
-        sports: []
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            sports: []
             // [
             //     {
             //         name: "Tests Sport 1"
@@ -93,25 +88,25 @@ export default class HomePage extends Component {
             //         , description: " Premier League"
             //     }
             // ]
+        }
     }
     componentDidMount() {
         this.getSports()
     }
 
     getSports = () => {
-       fetch('/api/sports')
-       .then(res => res.json())
-       .then(res => {
-           let sportsData = res.data
-      this.setState({ sports: {...sportsData} })
+        fetch('/api/sports')
+            .then(res => res.json())
+            .then(json => {
+                this.setState({ sports: json })
             })
     };
 
     render() {
-        const sportList = this.state.sports.map((sport) => {
+        const sports = this.state.sports.map((sport) => {
             return (
                 <Col sm="4">
-                    < SportCard 
+                    < SportCard
                         key={sport._id}
                         sportId={sport._id}
                         name={sport.name}
@@ -129,7 +124,7 @@ export default class HomePage extends Component {
                 <NewSportForm addSport={this.addNewSport} />
                 <Container fluid>
                     <Row>
-                        {sportList}
+                        {sports}
                     </Row>
                 </Container>
             </div>

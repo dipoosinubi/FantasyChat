@@ -5,14 +5,14 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-export default (league) => (
+export default (props) => (
     <div>
-        <Link to={'/sports/:sportsId/leagues/:league/messages'}>
+        <Link to={`/sports/${props.sportId}/leagues/${props.leaugeId}/messages`}>
             <Card className="leagueCard">
                 <CardBody>
-                    <CardTitle>{league.name}</CardTitle>
-                    <CardText>{league.description}</CardText>
-                    <CardText>{league.players}</CardText>
+                    <CardTitle>{props.name}</CardTitle>
+                    <CardText>{props.description}</CardText>
+                    <CardText>{props.players}</CardText>
                     <Button>Go To Messages</Button>
                 </CardBody>
             </Card>
