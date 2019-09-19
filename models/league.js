@@ -4,7 +4,10 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 
 //create schema for each Group
 const LeagueSchema = new mongoose.Schema({
-  sportsId: ObjectId,
+  sportsId: {
+    type: String,
+    require: true,
+  },
   name: {
     type: String,
     required: true,
@@ -18,22 +21,24 @@ const LeagueSchema = new mongoose.Schema({
       type: Number,
       require: true,
       default: 10
-  }
+  },
+  // sport: [SportSchema]
 })
 //Name of the collection that stores league information
 const LeagueCollection = mongoose.model('league', LeagueSchema);
 
-//Get all leagues
-const getAllLeagues = () => {
-  return LeagueCollection.find()
+//Get all for one sport leagues
+const getAllLeagues = (id) => {
+  return LeagueCollection.find({sportsId: id})
 }
 // Get one league
 const getLeague = (leagueId) => {
   return LeagueCollection.findById(leagueId)
 }
 // create a league
-const addNewLeague = (newGroup) => {
-  return LeagueCollection.create(newGroup)
+const addNewLeague = (sportsId, newSport) => {
+  newSport.sportsId = sportsId
+  return LeagueCollection.create(newSport)
 }
 //Update a specific league by id
 const updateLeague = (leagueId, updatedLeague) => {

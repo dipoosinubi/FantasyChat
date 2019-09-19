@@ -53,9 +53,9 @@ app.use(express.static(__dirname+"/public"))
  * add router for the application to use. The first argument is a prefix to all
  * the paths defined in the router.
  */
-app.use('/api/sports/:sportId/league', leagueRouter)
-app.use('/api/users', userRouter)
 app.use('/api/sports', sportRouter)
+app.use('/api/sports/:sportId/league', leagueRouter)
+app.use('/api/sports/:sportId/league/:leageId/users', userRouter)
 
 /* Step 5
  *

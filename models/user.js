@@ -11,7 +11,8 @@ const UserSchema = new mongoose.Schema({
   message: {
     type: String,
     default: "Can we trade ",
-  }
+  },
+  // League: [LeagueSchema]
 })
 //Name of the collection that stores user information
 const UserCollection = mongoose.model('user', UserSchema);

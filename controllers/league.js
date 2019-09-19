@@ -25,7 +25,8 @@ const leagueAPI = require('../models/league.js')
  * TODO: rename this from templateRouter to something that makes sense. (e.g:
  * `shopRouter`)
  */
-const leagueRouter = express.Router()
+const leagueRouter = express.Router({mergeParams:true})
+
 
 /* Step 4
  * 
@@ -38,7 +39,7 @@ const leagueRouter = express.Router()
  */
 //GET ALL LEAGUES 
 leagueRouter.get('/', (req, res) => {
-  leagueAPI.getAllLeagues()
+  leagueAPI.getAllLeagues(req.params.sportId)
     .then(leagues => { res.send(leagues) })
 })
 
@@ -49,7 +50,8 @@ leagueRouter.get('/:leagueId', (req, res) => {
 })
 // POST NEW LEAGUES 
 leagueRouter.post('/', (req, res) => {
-  leagueAPI.addNewLeague(req.body)
+  console.log(req.params)
+  leagueAPI.addNewLeague(req.params.sportId, req.body)
     .then((leagues) => { res.send(leagues) })
 })
 // UPDATE LEAGUES 
