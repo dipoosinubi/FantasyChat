@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import SportCard from './sportCard.js'
+import SportCard from './sportCard.js';
 import './homepage.css'
 
 class NewSportForm extends React.Component {

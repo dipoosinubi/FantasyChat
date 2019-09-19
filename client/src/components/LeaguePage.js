@@ -1,15 +1,14 @@
-import React, { Component } from 'react'
-import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, Button
-} from 'reactstrap';
+import React, { Component } from 'react';
+import { Container } from 'reactstrap';
+import LeagueCard from './leagueCard.js';
+import './leaguepage.css';
 
 class NewLeagueForm extends React.Component {
     state = {
         newLeague: {
             name: "",
             description: "",
-            players:0
+            players: 0
         }
     };
 
@@ -36,10 +35,10 @@ class NewLeagueForm extends React.Component {
                     placeholder="DESCRIPTION"
                 />
                 <input
-                type="text"
-                name="players"
-                value={this.state.newLeague.players}
-                onChange={this.handleTextInput}
+                    type="text"
+                    name="players"
+                    value={this.state.newLeague.players}
+                    onChange={this.handleTextInput}
                 />
                 <input type="submit" value="ADD LEAGUE" />
             </form>
@@ -69,27 +68,27 @@ export default class LeaguePage extends Component {
                 }
             ]
     }
-
     render() {
-        return (
+        let leagueList = this.state.leagues.map((league) => {
+            return (
+                < LeagueCard
+                    key={league._id}
+                    league={league._id}
+                    name={league.name}
+                    description={league.description}
+                    players={league.players}
+                />
+            )
+        })
 
-            <div >
-                 <NewLeagueForm addLeague={this.addNewLeague} />
-            {this.state.leagues.map((league) => {
-                return (
-                    <Card>
-                        {/* <CardImg top width="60%" src={sport.img} alt="Sport Image" /> */}
-                        <CardBody>
-                            <CardTitle>{league.name}</CardTitle>
-                            <CardText>{league.description}</CardText>
-                            <CardText>{league.players}</CardText>
-                            <Button>Go To Messages</Button>
-                        </CardBody>
-                    </Card>
-                )
-            })
-            }
-        </div>
+        return (
+            <div className='body'>
+                <h1>All leauges in "Selected Sport" </h1>
+                <NewLeagueForm addLeague={this.addNewLeague} />
+                <Container>
+                    {leagueList}
+                </Container>
+            </div>
         );
     }
 
