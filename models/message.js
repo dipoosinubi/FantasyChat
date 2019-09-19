@@ -1,5 +1,7 @@
 //Message model
 const mongoose = require('./connection.js')
+const ObjectId = mongoose.Schema.Types.ObjectId
+
 
 //create schema for each message
 const MessageSchema = new mongoose.Schema({
@@ -30,7 +32,7 @@ const getMessage = (messageId) => {
 }
 // create a Message
 const addNewMessage = (leagueId, newMessage) => {
-  newLeague.leagueId = leagueId
+  newMessage.leagueId = leagueId
   return MessageCollection.create(newMessage)
 }
 //Update a specific message by id

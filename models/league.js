@@ -1,8 +1,8 @@
-//Group model
+//League model
 const mongoose = require('./connection.js')
-// const ObjectId = mongoose.Schema.Types.ObjectId
+const ObjectId = mongoose.Schema.Types.ObjectId
 
-//create schema for each Group
+//create schema for each League
 const LeagueSchema = new mongoose.Schema({
   sportsId: {
     type: String,

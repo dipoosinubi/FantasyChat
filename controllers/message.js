@@ -49,6 +49,7 @@ messageRouter.get('/:messageId', (req, res) => {
 })
 // POST NEW MESSAGE
 messageRouter.post('/', (req, res) => {
+  console.log(req.params)
   messageAPI.addNewMessage(req.params.leagueId, req.body)
     .then((messages) => { res.send(messages) })
 })
