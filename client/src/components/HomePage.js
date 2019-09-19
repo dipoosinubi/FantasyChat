@@ -74,37 +74,38 @@ export default class HomePage extends Component {
     *
     */
     state = {
-        sports: //[]
-            [
-                {
-                    name: "Tests Sport 1"
-                    , description: "National Football League"
-                },
-                {
-                    name: "Test Sport 2"
-                    , description: " Nation BasketBall Association"
-                },
-                {
-                    name: "Test Sport 3"
-                    , description: " Nation BasketBall Association"
-                },
-                {
-                    name: "Test Sport 4"
-                    , description: " Premier League"
-                }
-            ]
+        sports: []
+            // [
+            //     {
+            //         name: "Tests Sport 1"
+            //         , description: "National Football League"
+            //     },
+            //     {
+            //         name: "Test Sport 2"
+            //         , description: " Nation BasketBall Association"
+            //     },
+            //     {
+            //         name: "Test Sport 3"
+            //         , description: " Nation BasketBall Association"
+            //     },
+            //     {
+            //         name: "Test Sport 4"
+            //         , description: " Premier League"
+            //     }
+            // ]
     }
-    // componentDidMount() {
-    //     this.getSports()
-    // }
+    componentDidMount() {
+        this.getSports()
+    }
 
-    // getSports = () => {
-    //    fetch('/api/sports')
-    //         .then(res => {
-    //             let sportsData = res.data
-    //             this.setState({ sports: {...sportsData} })
-    //         })
-    // };
+    getSports = () => {
+       fetch('/api/sports')
+       .then(res => res.json())
+       .then(res => {
+           let sportsData = res.data
+      this.setState({ sports: {...sportsData} })
+            })
+    };
 
     render() {
         const sportList = this.state.sports.map((sport) => {

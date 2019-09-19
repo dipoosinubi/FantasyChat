@@ -85,7 +85,7 @@ export default class LeaguePage extends Component {
             <div className='body'>
                 <h1>All leauges in "Selected Sport" </h1>
                 <NewLeagueForm addLeague={this.addNewLeague} />
-                <Container flex className="cardContainer">
+                <Container flex className="leagueContainer">
                     {/* <Row> */}
                         {leagueList}
                     {/* </Row> */}

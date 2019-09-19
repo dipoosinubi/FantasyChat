@@ -39,7 +39,7 @@ const sportRouter = express.Router()
 //GET ALL SPORTS
 sportRouter.get('/', (req, res) => {
   sportAPI.getAllSports()
-    .then(sports => { res.send(sports) })
+    .then(sports => { res.json(sports) })
 })
 
 //  GET SINGLE SPORT

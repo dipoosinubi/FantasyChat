@@ -10,5 +10,7 @@
     height: 300px;
     border: 2px solid;
     color: white;
-    margin-left: 25%
+}
+.leagueContainer{
+ display: center;
 }
