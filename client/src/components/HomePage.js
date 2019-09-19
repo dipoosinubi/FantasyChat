@@ -24,17 +24,17 @@ class NewSportForm extends React.Component {
     // componentDidMount() {
     // }
 
-     addNewSport =(sport) => {
-          fetch('/api/sports',
-                {
-                    method: 'POST'
-                    , headers: { 'Content-Type': 'application/json' }
-                    , body: JSON.stringify(sport)
-                }
-            ).then(response => response.json())
-             .then((responseJson) => console.log(responseJson))
-             .catch(error => console.log(error));
-    };
+    //  addNewSport =(sport) => {
+    //       fetch('/api/sports',
+    //             {
+    //                 method: 'POST'
+    //                 , headers: { 'Content-Type': 'application/json' }
+    //                 , body: JSON.stringify(sport)
+    //             }
+    //         ).then(response => response.json())
+    //          .then((responseJson) => console.log(responseJson))
+    //          .catch(error => console.log(error));
+    // };
 //     getAllCoursework = () =>
 //   fetch('/api/sports')
 //     .then(res => res.json())
@@ -76,29 +76,29 @@ export default class HomePage extends Component {
     *
     */
     state = {
-        sports: []
-    //     [
-    //         {
-    //             name: "Tests Sport 1"
-    //             , description: "National Football League"
-    //         },
-    //         {
-    //             name: "Test Sport 2"
-    //             , description: " Nation BasketBall Association"
-    //         }
-    //     ]
+        sports: //[]
+        [
+            {
+                name: "Tests Sport 1"
+                , description: "National Football League"
+            },
+            {
+                name: "Test Sport 2"
+                , description: " Nation BasketBall Association"
+            }
+        ]
     }
-    componentDidMount() {
-        this.getSports()
-    }
+    // componentDidMount() {
+    //     this.getSports()
+    // }
     
-    getSports = () => {
-       fetch('/api/sports')
-            .then(res => {
-                let sportsData = res.data
-                this.setState({ sports: {...sportsData} })
-            })
-    };
+    // getSports = () => {
+    //    fetch('/api/sports')
+    //         .then(res => {
+    //             let sportsData = res.data
+    //             this.setState({ sports: {...sportsData} })
+    //         })
+    // };
 
     render() {
         return (
