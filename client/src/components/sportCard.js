@@ -6,7 +6,7 @@ import {
 import {Link} from 'react-router-dom';
 
 export default (sport) => (
-    <div>
+    <div className="sportCard">
         <Link to={'/sports/:sportsId/leagues'}>
         <Card>
             <CardImg top width="10%" src="/test_photo.jpg" alt="Sport Image" />

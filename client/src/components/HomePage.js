@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import SportCard from './sportCard.js'
-
+import './homepage.css'
 
 class NewSportForm extends React.Component {
     state = {
@@ -83,6 +83,14 @@ export default class HomePage extends Component {
                 {
                     name: "Test Sport 2"
                     , description: " Nation BasketBall Association"
+                },
+                {
+                    name: "Test Sport 3"
+                    , description: " Nation BasketBall Association"
+                },
+                {
+                    name: "Test Sport 4"
+                    , description: " Premier League"
                 }
             ]
     }
@@ -99,25 +107,28 @@ export default class HomePage extends Component {
     // };
 
     render() {
-         const sportList = this.state.sports.map((sport) => {
+        const sportList = this.state.sports.map((sport) => {
             return (
-                < SportCard
-                    key={sport._id}
-                    sportId={sport._id}
-                    name={sport.name}
-                    description={sport.description}
-                />
+                <Col sm="4">
+                    < SportCard 
+                        key={sport._id}
+                        sportId={sport._id}
+                        name={sport.name}
+                        description={sport.description}
+                    />
+                </Col>
+
             )
         })
 
         return (
-            <div >
+            <div className='body'>
+                <h1> All Fantasy, No Reality</h1>
+                <p>Welcome to Oladipo's fantasy leagues </p>
                 <NewSportForm addSport={this.addNewSport} />
-                        <Container fluid>
+                <Container fluid>
                     <Row>
-                        <Col>
-                            {sportList}
-                        </Col>
+                        {sportList}
                     </Row>
                 </Container>
             </div>
