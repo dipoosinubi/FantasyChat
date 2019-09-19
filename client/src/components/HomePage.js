@@ -21,8 +21,8 @@ class NewSportForm extends React.Component {
     }
 
   
-    componentDidMount() {
-    }
+    // componentDidMount() {
+    // }
 
      addNewSport =(sport) => {
           fetch('/api/sports',
@@ -35,11 +35,15 @@ class NewSportForm extends React.Component {
              .then((responseJson) => console.log(responseJson))
              .catch(error => console.log(error));
     };
+//     getAllCoursework = () =>
+//   fetch('/api/sports')
+//     .then(res => res.json())
+//     .catch(() => []) 
     
-    handleSubmit = (evnt) => {
-        evnt.preventDefault();
-        this.addNewSport(this.state.newSport)
-    };
+//     handleSubmit = (evnt) => {
+//         evnt.preventDefault();
+//         this.addNewSport(this.state.newSport)
+//     };
 
     render() {
         return (
@@ -84,6 +88,17 @@ export default class HomePage extends Component {
     //         }
     //     ]
     }
+    componentDidMount() {
+        this.getSports()
+    }
+    
+    getSports = () => {
+       fetch('/api/sports')
+            .then(res => {
+                let sportsData = res.data
+                this.setState({ sports: {...sportsData} })
+            })
+    };
 
     render() {
         return (
