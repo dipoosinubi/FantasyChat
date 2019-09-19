@@ -1,6 +1,6 @@
 //Group model
 const mongoose = require('./connection.js')
-const ObjectId = mongoose.Schema.Types.ObjectId
+// const ObjectId = mongoose.Schema.Types.ObjectId
 
 //create schema for each Group
 const LeagueSchema = new mongoose.Schema({
@@ -10,7 +10,7 @@ const LeagueSchema = new mongoose.Schema({
   },
   name: {
     type: String,
-    required: true,
+    require: true,
     default: "Fantasy 1",
   },
   description: {
@@ -22,7 +22,6 @@ const LeagueSchema = new mongoose.Schema({
       require: true,
       default: 10
   },
-  // sport: [SportSchema]
 })
 //Name of the collection that stores league information
 const LeagueCollection = mongoose.model('league', LeagueSchema);

@@ -18,7 +18,7 @@ const app = express()
  *
  */
 const { leagueRouter } = require('./controllers/league.js')
-const { userRouter }   = require('./controllers/user.js')
+const { messageRouter }   = require('./controllers/message.js')
 const { sportRouter }  = require('./controllers/sport.js')
 // const { messageRouter} = require()
 
@@ -54,8 +54,8 @@ app.use(express.static(__dirname+"/public"))
  * the paths defined in the router.
  */
 app.use('/api/sports', sportRouter)
-app.use('/api/sports/:sportId/league', leagueRouter)
-app.use('/api/sports/:sportId/league/:leageId/users', userRouter)
+app.use('/api/sports/:sportId/leagues', leagueRouter)
+app.use('/api/sports/:sportId/leagues/:leageId/messages', messageRouter)
 
 /* Step 5
  *
