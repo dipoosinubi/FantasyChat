@@ -4,10 +4,53 @@ import {
     CardTitle, Button
 } from 'reactstrap';
 
+class NewLeagueForm extends React.Component {
+    state = {
+        newLeague: {
+            name: "",
+            description: "",
+            players:0
+        }
+    };
+
+    handleTextInput = (evnt) => {
+        let newLeague = { ...this.state.newLeague }
+        newLeague[evnt.target.name] = evnt.target.value
+        this.setState({ newLeague })
+    }
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <input
+                    type="text"
+                    name="name"
+                    value={this.state.newLeague.name}
+                    onChange={this.handleTextInput}
+                    placeholder="NAME"
+                />
+                <input
+                    type="text"
+                    name="description"
+                    value={this.state.newLeague.description}
+                    onChange={this.handleTextInput}
+                    placeholder="DESCRIPTION"
+                />
+                <input
+                type="text"
+                name="players"
+                value={this.state.newLeague.players}
+                onChange={this.handleTextInput}
+                />
+                <input type="submit" value="ADD LEAGUE" />
+            </form>
+        )
+    }
+}
+
 export default class LeaguePage extends Component {
 
     state = {
-        leauges: //[]
+        leagues: //[]
             [
                 {
                     name: "Tests League 1"
@@ -29,23 +72,25 @@ export default class LeaguePage extends Component {
 
     render() {
         return (
+
             <div >
+                 <NewLeagueForm addLeague={this.addNewLeague} />
             {this.state.leagues.map((league) => {
                 return (
-                    <Card>
+                    <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
                         {/* <CardImg top width="60%" src={sport.img} alt="Sport Image" /> */}
                         <CardBody>
                             <CardTitle>{league.name}</CardTitle>
                             <CardText>{league.description}</CardText>
-                            <CardText>{league.number}</CardText>
-                            <Button>Go To Leagues</Button>
+                            <CardText>{league.players}</CardText>
+                            <Button>Go To Messages</Button>
                         </CardBody>
                     </Card>
                 )
             })
             }
         </div>
-        )
+        );
     }
 
 }
