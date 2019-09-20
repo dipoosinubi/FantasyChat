@@ -8,7 +8,8 @@ class NewLeagueForm extends React.Component {
         newLeague: {
             name: "",
             description: "",
-            players: 0
+            players: 0,
+            sportId:""
         }
     };
 
@@ -18,7 +19,8 @@ class NewLeagueForm extends React.Component {
         this.setState({ newLeague })
     }
     addNewLeague = (league) => {
-        fetch('/api/sports',
+        // console.log(this.state.leagues.sportId)
+        fetch(`/api/sports/${this.state.league.sportId}/leagues`,
         {
             method: 'POST'
             , headers: { 'Content-Type': 'application/json' }
@@ -89,22 +91,27 @@ export default class LeaguePage extends Component {
         }
     }
     componentDidMount() {
-        this.getLeagues()
+        this.getAllLeagues()
     }
 
-    getLeagues = () => {
-        fetch('/api/sports/:sportId/leagues')
+    getAllLeagues = () => {
+        fetch(`/api/sports/${this.props.match.params.sportsId}/leagues`)
             .then(res => res.json())
             .then(json => {
                 this.setState({ leagues: json })
             })
     };
-
+   
+    
     render() {
-        let leagues = this.state.leagues.map((league) => {
+        //  const leagueBySport = this.state.leagues.filter( leagues =>
+        //     this.props.match.params.sportsId === this.state.leagues.sportId)
+        // const leagues = leagueBySport.map((league) => {
+        const leagues = this.state.leagues.map((league) => {
             return (
                 < LeagueCard
                     key={league._id}
+                    sportId={league._id}
                     leagueId={league._id}
                     name={league.name}
                     description={league.description}

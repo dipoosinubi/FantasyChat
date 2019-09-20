@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import SportCard from './sportCard.js';
@@ -10,7 +9,7 @@ class NewSportForm extends React.Component {
             name: "",
             description: ""
         }
-    }
+    };
 
     handleTextInput = (evnt) => {
         let newSport = { ...this.state.newSport }
