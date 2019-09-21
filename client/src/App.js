@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HomePage from './components/HomePage'
 import LeaguePage from './components/LeaguePage'
-import MessagePage from './components/MessagePage'
+import PlayerPage from './components/PlayerPage'
 
 import './App.css';
 
@@ -13,7 +13,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage}/>
           <Route exact path="/sports/:sportsId/leagues" component={LeaguePage}/>
-          <Route exact path="/sports/:sportsId/leagues/:league/messages" component={MessagePage}/>
+          <Route exact path="/sports/:sportsId/leagues/:league/messages" component={PlayerPage}/>
         </Switch>
       </Router>
     </div>

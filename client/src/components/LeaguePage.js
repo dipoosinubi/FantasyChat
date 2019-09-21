@@ -9,6 +9,7 @@ class NewLeagueForm extends React.Component {
             name: "",
             description: "",
             players: 0,
+            website: "",
             sportId:""
         }
     };
@@ -55,6 +56,12 @@ class NewLeagueForm extends React.Component {
                 <input
                     type="text"
                     name="players"
+                    // value={this.state.newLeague.players}
+                    onChange={this.handleTextInput}
+                />
+                <input
+                    type="text"
+                    name="website"
                     // value={this.state.newLeague.players}
                     onChange={this.handleTextInput}
                 />
@@ -111,11 +118,12 @@ export default class LeaguePage extends Component {
             return (
                 < LeagueCard
                     key={league._id}
-                    sportId={league._id}
+                    // sportId={league._id}
                     leagueId={league._id}
                     name={league.name}
                     description={league.description}
                     players={league.players}
+                    website={league.website}
                 />
             )
         })

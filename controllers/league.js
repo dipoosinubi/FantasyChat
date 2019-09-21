@@ -50,7 +50,7 @@ leagueRouter.get('/:leagueId', (req, res) => {
 })
 // POST NEW LEAGUES 
 leagueRouter.post('/', (req, res) => {
-  console.log(req.params)
+  // console.log(req.params)
   leagueAPI.addNewLeague(req.params.sportId, req.body)
     .then((leagues) => { res.send(leagues) })
 })

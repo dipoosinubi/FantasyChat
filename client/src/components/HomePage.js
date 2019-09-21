@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import SportCard from './sportCard.js';
 import './homepage.css'
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class NewSportForm extends React.Component {
     state = {
@@ -36,23 +37,24 @@ class NewSportForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input
-                    type="text"
-                    name="name"
-                    // value={this.state.newSportText}
-                    onChange={this.handleTextInput}
-                    placeholder="NAME"
-                />
-                <input
-                    type="text"
-                    name="description"
-                    // value={this.state.newDescriptionText}
-                    onChange={this.handleTextInput}
-                    placeholder="DESCRIPTION"
-                />
-                <input type="submit" value="ADD SPORT" />
-            </form>
+            <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                    <input
+                        type="text"
+                        onChange={this.handleTextInput}
+                        placeholder="NAME"
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <input
+                        type="text"
+                        name="description"
+                        onChange={this.handleTextInput}
+                        placeholder="DESCRIPTION"
+                    />
+                    <input className="button" type="submit" value="ADD SPORT" />
+                </FormGroup>
+            </Form>
         )
     }
 }

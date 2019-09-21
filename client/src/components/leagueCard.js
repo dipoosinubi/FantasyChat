@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
     Card, CardText, CardBody,
-    CardTitle, Button
+    CardTitle, Button, Label
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
@@ -13,9 +13,15 @@ export default (props) => (
                     <CardTitle>{props.name}</CardTitle>
                     <CardText>{props.description}</CardText>
                     <CardText>{props.players}</CardText>
-                    <Button>Go To Messages</Button>
+                    {/* <CardBody>{props.website}</CardBody>
+                    <Button >Go To Messages</Button> */}
                 </CardBody>
             </Card>
         </Link>
+          {/* <div style={styles.alignText}> */}
+          <Label color='green' basic>
+                <a href="{props.website}" target="_blank">Click here</a>
+            </Label>
+        {/* </div> */}
     </div>
 );

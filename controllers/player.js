@@ -39,7 +39,7 @@ const playerRouter = express.Router({mergeParams:true})
 //GET ALL MESSAGES
 playerRouter.get('/', (req, res) => {
   playerAPI.getAllPlayers(req.params.leagueId)
-    .then(messages => { res.send(messages) })
+    .then(players => { res.json(players) })
 })
 
 //  GET SINGLE MESSAGE
@@ -49,9 +49,9 @@ playerRouter.get('/:messageId', (req, res) => {
 })
 // POST NEW MESSAGE
 playerRouter.post('/', (req, res) => {
-  console.log(req.params)
+  console.log(`${req.params}`)
   playerAPI.addNewPlayer(req.params.leagueId, req.body)
-    .then((messages) => { res.send(messages) })
+    .then((players) => { res.send(players) })
 })
 // UPDATE MESSAGE
 playerRouter.put('/:messageId', (req, res) => {
