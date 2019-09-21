@@ -15,7 +15,7 @@ const express = require('express')
  * controller you need.
  * 
  */
-const messageAPI = require('../models/message.js')
+const playerAPI = require('../models/player.js')
 
 /* Step 3 
  * 
@@ -25,7 +25,7 @@ const messageAPI = require('../models/message.js')
  * TODO: rename this from templateRouter to something that makes sense. (e.g:
  * `shopRouter`)
  */
-const messageRouter = express.Router({mergeParams:true})
+const playerRouter = express.Router({mergeParams:true})
 
 /* Step 4
  * 
@@ -37,31 +37,31 @@ const messageRouter = express.Router({mergeParams:true})
  * TODO: delete this handler; it's just a sample
  */
 //GET ALL MESSAGES
-messageRouter.get('/', (req, res) => {
-  messageAPI.getAllMessages(req.params.leagueId)
+playerRouter.get('/', (req, res) => {
+  playerAPI.getAllPlayers(req.params.leagueId)
     .then(messages => { res.send(messages) })
 })
 
 //  GET SINGLE MESSAGE
-messageRouter.get('/:messageId', (req, res) => {
-  messageAPI.getMessage(req.params.messageId)
-    .then(message => { res.send(message) })
+playerRouter.get('/:messageId', (req, res) => {
+  playerAPI.getPlayer(req.params.messageId)
+    .then(player => { res.send(player) })
 })
 // POST NEW MESSAGE
-messageRouter.post('/', (req, res) => {
+playerRouter.post('/', (req, res) => {
   console.log(req.params)
-  messageAPI.addNewMessage(req.params.leagueId, req.body)
+  playerAPI.addNewPlayer(req.params.leagueId, req.body)
     .then((messages) => { res.send(messages) })
 })
 // UPDATE MESSAGE
-messageRouter.put('/:messageId', (req, res) => {
-  messageAPI.updateMesaage(req.params.messageId, req.body)
-    .then((message) => { res.send(message) })
+playerRouter.put('/:messageId', (req, res) => {
+  playerAPI.updatePlayer(req.params.messageId, req.body)
+    .then((player) => { res.send(player) })
 })
 //DELETE MESSAGE
-messageRouter.delete('/:messageId', (req, res) => {
-  messageAPI.deleteMessage(req.params.messageId)
-    .then( (message) => { res.send(message) })
+playerRouter.delete('/:messageId', (req, res) => {
+  playerAPI.deletePlayer(req.params.messageId)
+    .then( (player) => { res.send(player) })
 })
 
 /* Step 6
@@ -70,5 +70,5 @@ messageRouter.delete('/:messageId', (req, res) => {
  *
  */
 module.exports = {
-  messageRouter
+  playerRouter
 }

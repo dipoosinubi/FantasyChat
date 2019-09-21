@@ -18,9 +18,9 @@ const app = express()
  *
  */
 const { leagueRouter } = require('./controllers/league.js')
-const { messageRouter }   = require('./controllers/message.js')
+const { playerRouter }   = require('./controllers/player.js')
 const { sportRouter }  = require('./controllers/sport.js')
-// const { messageRouter} = require()
+// const { playerRouter} = require()
 
 
 /* Step 3
@@ -55,7 +55,7 @@ app.use(express.static(__dirname+"/public"))
  */
 app.use('/api/sports', sportRouter)
 app.use('/api/sports/:sportId/leagues', leagueRouter)
-app.use('/api/sports/:sportId/leagues/:leageId/messages', messageRouter)
+app.use('/api/sports/:sportId/leagues/:leageId/players', playerRouter)
 
 /* Step 5
  *
