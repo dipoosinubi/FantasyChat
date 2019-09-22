@@ -18,6 +18,18 @@ const PlayerSchema = new mongoose.Schema({
     type: String,
     default: "Preston Turner",
   },
+  wins:{
+    type: Number,
+    default: 3
+  },
+  loss:{
+    type: Number,
+    default: 2
+  },
+  tie:{
+    type: Number,
+    default: 0
+  }
 })
 //Name of the collection that stores player information
 const PlayerCollection = mongoose.model('player', PlayerSchema);

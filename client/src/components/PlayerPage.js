@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { Container} from 'reactstrap';
+import { Container } from 'reactstrap';
 import PlayerCard from './playerCard.js';
 
 class NewPlayerForm extends React.Component {
@@ -55,28 +55,44 @@ class NewPlayerForm extends React.Component {
     }
 }
 
-export default class MessagePage extends Component {
+export default class PlayerPage extends Component {
 
-    state = {
-        players: []
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            players: []
             // [
             //     {
             //         teamName: "Ballers"
             //         , name: "Sue Storm"
+            //         ,win: 2
+            //         ,loss:3
+            //         ,tie: 0
             //     },
             //     {
             //         teamName: "Demogorgons"
             //         , name: "Johnny Storm"
+            //         ,win: 2
+            //         ,loss:3
+            //         ,tie: 0
             //     },
             //     {
             //         teamName: "Ballers"
             //         , name: "Mr Fantastic"
+            //         ,win: 2
+            //         ,loss:3
+            //         ,tie: 0
             //     },
             //     {
             //         teamName: "IssaBadTrade"
             //         , name: "The Thing"
+            //         ,win: 2
+            //         ,loss:3
+            //         ,tie: 0
             //     }
             // ]
+        }
     }
     componentDidMount() {
         this.getPlayers()
@@ -93,25 +109,22 @@ export default class MessagePage extends Component {
         const players = this.state.players.map((player) => {
             return (
                 <PlayerCard
-                    
                     key={player._id}
-                    // league={league._id}
-                    // sportId={sport._id}
+                    league={player._id}
+                    sportId={player._id}
                     playerId={player._id}
+                    teamName={player.teamName}
                     name={player.name}
-                    description={player.description}
-                    players={player.players}
-                    website={player.website}
                 />
             )
         })
         return (
             <div>
                 <h1>Message Container will go here</h1>
-          <NewPlayerForm addPlayer={this.addNewPlayer} />
-          <Container>
-              {players}
-          </Container>
+                <NewPlayerForm addPlayer={this.addNewPlayer} />
+                <Container>
+                    {players}
+                </Container>
             </div>
         )
     }
