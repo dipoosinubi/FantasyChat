@@ -3,7 +3,8 @@
     color: #EDF5E1;
 }
 .leagueCard{
-    background-image: url('/test_photo.jpg'); 
+    background: #05386b;
+     /* background-image: url('/test_photo.jpg');  */
     background-size: cover;
     background-position: center;
     margin-top: 50px;
@@ -11,6 +12,7 @@
     height: 300px;
     border: 2px solid;
     color: white;
+    margin-bottom: 50px;
 }
 .leagueContainer{
  display: center;

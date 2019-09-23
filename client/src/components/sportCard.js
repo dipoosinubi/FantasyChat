@@ -11,7 +11,7 @@ export default (props) => (
         <Link to={`/api/sports/${props.sportId}/leagues`} thisSportId={props.sportId}>
             <Card>
                 {/* <CardImg top width="10%" src="/test_photo.jpg" alt="Sport Image" /> */}
-                <CardImg className="card-img-top" top width="10%" top height="5%" src={props.image} alt="Sport Image" />
+                <CardImg className="card-img-top" top width="200" top height="200" src={props.image} alt="Sport Image" />
                 <CardBody className="cardBody">
                     <CardTitle>{props.name}</CardTitle>
                     <CardText>{props.description}</CardText>

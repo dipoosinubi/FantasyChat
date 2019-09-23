@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row } from 'reactstrap';
+import { Container, Row, FormGroup } from 'reactstrap';
 import LeagueCard from './leagueCard.js';
 import './leaguepage.css';
 
@@ -41,24 +41,30 @@ class NewLeagueForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
+                <FormGroup>
                 <input
                     type="text"
                     name="name"
                     onChange={this.handleTextInput}
-                    placeholder="ENTER NAME"
+                    placeholder="ENTER LEAGUE NAME"
                 />
+                </FormGroup>
+                <FormGroup>
                 <input
                     type="text"
                     name="description"
                     onChange={this.handleTextInput}
-                    placeholder="ENTER DESCRIPTION"
+                    placeholder="ENTER TEAM NAME"
                 />
+                </FormGroup>
+                <FormGroup>
                 <input
                     type="text"
                     name="players"
                     onChange={this.handleTextInput}
                     placeholder= "NUMBER OF PLAYERS"
                 />
+                </FormGroup>
                 <input  className="button" type="submit" value="ADD LEAGUE" />
             </form>
         )
@@ -123,12 +129,15 @@ export default class LeaguePage extends Component {
 
         return (
             <div className='leagueBody'>
-                <h1>All leauges in "Selected Sport" </h1>
+                <h1>All Leaues </h1>
+                <p>Here are my current leagues I'm in this year. To add a need league, <br/>
+                enter the league name, the team name , and the number of players in the league <br />in the input field below. 
+                </p>
                 <NewLeagueForm addLeague={this.addNewLeague} />
                 <Container flex className="leagueContainer">
-                    {/* <Row> */}
+                    <Row>
                         {leagues}
-                    {/* </Row> */}
+                    </Row>
                 </Container>
             </div>
         );
