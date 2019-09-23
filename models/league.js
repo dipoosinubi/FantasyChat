@@ -21,10 +21,6 @@ const LeagueSchema = new mongoose.Schema({
       type: Number,
       require: true,
       default: 10
-  },
-  website: {
-    type: String,
-    default:"https://fantasy.nfl.com/league/6899275"
   }
 })
 //Name of the collection that stores league information

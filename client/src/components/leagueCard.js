@@ -4,10 +4,11 @@ import {
     CardTitle
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import './leaguepage.css'
 
 export default (props) => (
     <div>
-        <Link to={`/sports/${props.sportId}/${props.leaugeId}/players`}>
+        <Link to={`/api/sports/${props.sportId}/leagues/${props.leaugeId}/players`}>
             <Card className="leagueCard">
                 <CardBody>
                     <CardTitle>{props.name}</CardTitle>

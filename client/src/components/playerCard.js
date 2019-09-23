@@ -10,7 +10,6 @@ export default (props) => (
                 <CardBody>
                     <CardTitle>{props.teamName}</CardTitle>
                     <CardText>{props.name}</CardText>
-                    <CardText>{props.players}</CardText>
                 </CardBody>
             </Card>
           {/* <div style={styles.alignText}> */}

@@ -8,11 +8,13 @@ class NewLeagueForm extends React.Component {
         newLeague: {
             name: "",
             description: "",
-            players: 0,
-            website: "",
-            sportId:""
+            players: 0
         }
     };
+
+    // componentDidMount() {
+    //     console.log(this.state.sportsId)
+    // }
 
     handleTextInput = (evnt) => {
         let newLeague = { ...this.state.newLeague }
@@ -20,8 +22,8 @@ class NewLeagueForm extends React.Component {
         this.setState({ newLeague })
     }
     addNewLeague = (league) => {
-        // console.log(this.state.leagues.sportId)
-        fetch(`/api/sports/${this.state.league.sportId}/leagues`,
+         console.log(league.sportId)
+        fetch(`/api/sports/${this.props.match.params.sportsId}/leagues/`,
         {
             method: 'POST'
             , headers: { 'Content-Type': 'application/json' }
@@ -42,30 +44,22 @@ class NewLeagueForm extends React.Component {
                 <input
                     type="text"
                     name="name"
-                    // value={this.state.newLeague.name}
                     onChange={this.handleTextInput}
-                    placeholder="NAME"
+                    placeholder="ENTER NAME"
                 />
                 <input
                     type="text"
                     name="description"
-                    // value={this.state.newLeague.description}
                     onChange={this.handleTextInput}
-                    placeholder="DESCRIPTION"
+                    placeholder="ENTER DESCRIPTION"
                 />
                 <input
                     type="text"
                     name="players"
-                    // value={this.state.newLeague.players}
                     onChange={this.handleTextInput}
+                    placeholder= "NUMBER OF PLAYERS"
                 />
-                <input
-                    type="text"
-                    name="website"
-                    // value={this.state.newLeague.players}
-                    onChange={this.handleTextInput}
-                />
-                <input type="submit" value="ADD LEAGUE" />
+                <input  className="button" type="submit" value="ADD LEAGUE" />
             </form>
         )
     }
@@ -114,22 +108,21 @@ export default class LeaguePage extends Component {
         //  const leagueBySport = this.state.leagues.filter( leagues =>
         //     this.props.match.params.sportsId === this.state.leagues.sportId)
         // const leagues = leagueBySport.map((league) => {
-        const leagues = this.state.leagues.map((league) => {
+        const leagues = this.state.leagues.map((leagues) => {
             return (
                 < LeagueCard
-                    key={league._id}
-                    // sportId={league._id}
-                    leagueId={league._id}
-                    name={league.name}
-                    description={league.description}
-                    players={league.players}
-                    website={league.website}
+                    key={leagues._id}
+                    sportId={leagues.sportsId}
+                    leagueId={leagues._id}
+                    name={leagues.name}
+                    description={leagues.description}
+                    players={leagues.players}
                 />
             )
         })
 
         return (
-            <div className='body'>
+            <div className='leagueBody'>
                 <h1>All leauges in "Selected Sport" </h1>
                 <NewLeagueForm addLeague={this.addNewLeague} />
                 <Container flex className="leagueContainer">

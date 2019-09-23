@@ -13,7 +13,11 @@ const SportSchema = new mongoose.Schema({
         type: String,
         default: "National Football League",
     },
-    // leagues: [leagues]
+    image:{
+        type: String,
+        require:true,
+        default: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+    }
 })
 //Name of the collection that stores sport information
 const SportCollection = mongoose.model('sport', SportSchema);

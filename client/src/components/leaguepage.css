@@ -1,5 +1,6 @@
-.body{
-   
+.leagueBody{
+    background: #25274D;
+    color: #EDF5E1;
 }
 .leagueCard{
     background-image: url('/test_photo.jpg'); 
@@ -13,4 +14,18 @@
 }
 .leagueContainer{
  display: center;
+}
+.sportCard{
+    width: 18rem;
+    margin-top: 50px;
+    
+}
+.leagueCard:hover{
+    box-shadow: 5px 10px 20px 1px rgba(170,171,184,0.5)!important;
+}
+.button {
+        background: #2C9CCA;
+}
+.classBody{
+    background: #05386b
 }

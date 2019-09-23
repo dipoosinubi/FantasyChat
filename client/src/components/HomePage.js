@@ -8,7 +8,8 @@ class NewSportForm extends React.Component {
     state = {
         newSport: {
             name: "",
-            description: ""
+            description: "",
+            image:""
         }
     };
 
@@ -19,7 +20,7 @@ class NewSportForm extends React.Component {
     }
 
     addNewSport = (sport) => {
-        fetch('/api/sports',
+        fetch('/api/sports/',
             {
                 method: 'POST'
                 , headers: { 'Content-Type': 'application/json' }
@@ -41,6 +42,7 @@ class NewSportForm extends React.Component {
                 <FormGroup>
                     <input
                         type="text"
+                        name="name"
                         onChange={this.handleTextInput}
                         placeholder="NAME"
                     />
@@ -52,8 +54,18 @@ class NewSportForm extends React.Component {
                         onChange={this.handleTextInput}
                         placeholder="DESCRIPTION"
                     />
+                    </FormGroup>
+                    <FormGroup>
+                       <input
+                        type="text"
+                        name="image"
+                        onChange={this.handleTextInput}
+                        placeholder="Enter URL"
+                    />
+                    </FormGroup>
+                     <FormGroup>
                     <input className="button" type="submit" value="ADD SPORT" />
-                </FormGroup>
+                </FormGroup> 
             </Form>
         )
     }
@@ -96,7 +108,7 @@ export default class HomePage extends Component {
     }
 
     getSports = () => {
-        fetch('/api/sports')
+        fetch('/api/sports/')
             .then(res => res.json())
             .then(json => {
                 this.setState({ sports: json })
@@ -106,12 +118,13 @@ export default class HomePage extends Component {
     render() {
         const sports = this.state.sports.map((sport) => {
             return (
-                <Col sm="4">
+                <Col className="CardImg"sm="4">
                     < SportCard
                         key={sport._id}
                         sportId={sport._id}
                         name={sport.name}
                         description={sport.description}
+                        image={sport.image}
                     />
                 </Col>
 
@@ -119,7 +132,7 @@ export default class HomePage extends Component {
         })
 
         return (
-            <div className='body'>
+            <div className='homeBody'>
                 <h1> All Fantasy, No Reality</h1>
                 <p>Welcome to Oladipo's fantasy leagues </p>
                 <NewSportForm addSport={this.addNewSport} />

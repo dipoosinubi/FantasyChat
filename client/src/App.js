@@ -14,8 +14,8 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={HomePage}/>
-          <Route exact path="/sports/:sportsId/leagues" component={LeaguePage}/>
-          <Route exact path="/sports/:sportsId/leagues/:league/players" component={PlayerPage}/>
+          <Route exact path="/api/sports/:sportsId/leagues" component={LeaguePage}/>
+          <Route exact path="/api/sports/:sportsId/leagues/:league/players" component={PlayerPage}/>
         </Switch>
       </Router>
     </div>

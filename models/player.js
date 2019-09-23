@@ -16,19 +16,7 @@ const PlayerSchema = new mongoose.Schema({
   },
   name: {
     type: String,
-    default: "Preston Turner",
-  },
-  wins:{
-    type: Number,
-    default: 3
-  },
-  loss:{
-    type: Number,
-    default: 2
-  },
-  tie:{
-    type: Number,
-    default: 0
+    default: "Preston Turner"
   }
 })
 //Name of the collection that stores player information
@@ -48,8 +36,8 @@ const addNewPlayer = (leagueId, newPlayer) => {
   return PlayerCollection.create(newPlayer)
 }
 //Update a specific player by id
-const updatePlayer = (playerId, updatedUser) => {
-  return PlayerCollection.updateOne({_id:playerId}, updatedUser)
+const updatePlayer = (playerId, updatedPlayer) => {
+  return PlayerCollection.updateOne({_id:playerId}, updatedPlayer)
 }
 // Delete a specific player by Id
 const deletePlayer = (playerId) => {
