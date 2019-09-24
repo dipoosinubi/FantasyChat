@@ -1,12 +1,11 @@
 # General Assembly SEI July 29th - Project 3
 
-* [Deployed App](https://indiepk.herokuapp.com/)
+* [Deployed App](https://thawing-bayou-98423.herokuapp.com)
 * [Project Board](https://github.com/dipoosinubi/FantasyDB/projects/1)
 
 ## Overview
 
-The goal of this project was to create a full stack application using the MERN Stack that would allow users to recieve messages in realtime. Created a fully functional chat application using React.js, Express, MongoDB, Mongoose, Node.js and Socket.io. The most challenging part of this project was integrating socket.io into a fullstack mern application because there was a lack of examples using socket.io in a mern application. The solution I came up with arose from my understanding of… https://chatter-project.herokuapp.com/
-
+The goal of this project was to create a full stack application using the MERN Stack that would allow a single user(ME) to manage and keep track of all players in various fantasy leagues of various sports . The most challenging part of this project was accessing my MongoDB using the AJAX library; Window.fetch.
 
 ## Technologies Used:
 * Express
