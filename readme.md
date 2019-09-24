@@ -5,7 +5,7 @@
 
 ## Overview
 
-The goal of this project was to create a full stack application using the MERN Stack that would allow a single user(ME) to manage and keep track of all players in various fantasy leagues of various sports . The most challenging part of this project was accessing my MongoDB using the AJAX library; Window.fetch.
+The goal of this project was to create a full stack application using the MERN Stack that would allow a single user(ME) manage and keep track of all players in various fantasy leagues of various sports . The most challenging part of this project was accessing my MongoDB using the AJAX call fetch API
 
 ## Technologies Used:
 * Express
