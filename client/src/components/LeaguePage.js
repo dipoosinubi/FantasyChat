@@ -22,8 +22,9 @@ class NewLeagueForm extends React.Component {
         this.setState({ newLeague })
     }
     addNewLeague = (league) => {
-         console.log(league.sportId)
-        fetch(`/api/sports/${this.props.match.params.sportsId}/leagues/`,
+        // const banana = this.props.match.params.sportsId
+        //  console.log(banana)z
+        fetch(`/api/sports/${this.props.sportsId}/leagues`,
         {
             method: 'POST'
             , headers: { 'Content-Type': 'application/json' }
@@ -36,6 +37,7 @@ class NewLeagueForm extends React.Component {
     handleSubmit = (evnt) => {
         evnt.preventDefault();
         this.addNewLeague(this.state.newLeague)
+        // window.location.reload();
     };
 
     render() {
@@ -102,6 +104,7 @@ export default class LeaguePage extends Component {
     }
 
     getAllLeagues = () => {
+        console.log(this.props.match.params.sportsId)
         fetch(`/api/sports/${this.props.match.params.sportsId}/leagues`)
             .then(res => res.json())
             .then(json => {
@@ -129,7 +132,7 @@ export default class LeaguePage extends Component {
 
         return (
             <div className='leagueBody'>
-                <h1>All Leaues </h1>
+                <h1>All Leagues </h1>
                 <p>Here are my current leagues I'm in this year. To add a need league, <br/>
                 enter the league name, the team name , and the number of players in the league <br />in the input field below. 
                 </p>

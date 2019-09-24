@@ -36,11 +36,6 @@ class NewSportForm extends React.Component {
         this.addNewSport(this.state.newSport)
         window.location.reload();
     };
-    // _refreshPage() {
-    //     console.log("Clicked");
-    //     window.location.reload();
-    //   }
-    
 
     render() {
         return (

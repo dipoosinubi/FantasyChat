@@ -1,31 +1,37 @@
-# mern-template-project
+# General Assembly SEI July 29th - Project 3
 
-# Setup A New Project From This Template
+* [Deployed App](https://indiepk.herokuapp.com/)
+* [Project Board](https://github.com/dipoosinubi/FantasyDB/projects/1)
 
-If you are starting a new project do the following:
+## Overview
 
-1. copy/download this directory to where you new project is located and rename
-   it to the name of your project.
-1. change your directory (`cd`) into the copied project template
-1. `npm install`
-1. `npm run dev`
-1. Open a new browser window and navigate to the URL http://localhost:3000/
-    here you should see `hello world` displayed after page load
-    updates should show up here automatically
-1. see the `client/src` `readme.md` file for more information on the react project
-
-# Setup A New Project Without This Template
-
-If you want to start a project without using this template directory do the
-following:
+The goal of this project was to create a full stack application using the MERN Stack that would allow users to recieve messages in realtime. Created a fully functional chat application using React.js, Express, MongoDB, Mongoose, Node.js and Socket.io. The most challenging part of this project was integrating socket.io into a fullstack mern application because there was a lack of examples using socket.io in a mern application. The solution I came up with arose from my understanding of… https://chatter-project.herokuapp.com/
 
 
-1. `mkdir <project-name>`
-1. `cd <project-name>`
-1. `echo "# <project-name>" > readme.md`
-1. `git init`
-1. `git add readme.md `
-1. `git commit -m "init repo with readme.md"`
-1. `npm init`
-1. `mkdir models views controllers`
-1. `touch ./server.js`
+## Technologies Used:
+* Express
+* MongoDB
+* Mongoose 
+* NodeJs
+* JavaScript
+* ReactJS
+* React Bootstrap
+* CSS
+
+## Version 2 Goals:
+* Apply full CRUD to all 3 Models
+* Add chat functionality to individal leagues
+* Adjust app for a friendlier mobile view
+* Implement some kind of image/file upload system
+
+## ERD
+
+![ERD](client/public/ERD.jpg)
+
+## Wireframes
+
+![Home](client/public/home.jpg)
+
+![League Page](client/public/league.jpg)
+
+![Player Page](client/public/player.jpg)
