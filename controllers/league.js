@@ -41,28 +41,33 @@ const leagueRouter = express.Router({mergeParams:true})
 leagueRouter.get('/', (req, res) => {
   leagueAPI.getAllLeagues(req.params.sportId)
     .then(leagues => { res.send(leagues) })
+    .catch(err => console.log(err))
 })
 
 //  GET SINGLE GROUP
 leagueRouter.get('/:leagueId', (req, res) => {
   leagueAPI.getLeague(req.params.leagueId)
     .then(league => { res.send(league) })
+    .catch(err => console.log(err))
 })
 // POST NEW LEAGUES 
 leagueRouter.post('/', (req, res) => {
   // console.log(req.params)
-  leagueAPI.addNewLeague(req.params.sportId, req.body)
+  leagueAPI.addNewLeague( req.body, req.params.sportId)
     .then((leagues) => { res.send(leagues) })
+    .catch(err => console.log(err))
 })
 // UPDATE LEAGUES 
 leagueRouter.put('/:leagueId', (req, res) => {
-  leagueAPI.updateLeague(req.params.leagueId, req.body)
+  leagueAPI.updateLeague(req.body,req.params.leagueId)
     .then((league) => { res.send(league) })
+    .catch(err => console.log(err))
 })
 //DELETE LEAGUES  
 leagueRouter.delete('/:leagueId', (req, res) => {
   leagueAPI.deleteLeague(req.params.leagueId)
     .then( (leagues) => { res.send(leagues) })
+    .catch(err => console.log(err))
 })
 
 /* Step 6

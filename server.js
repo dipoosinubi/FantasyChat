@@ -55,7 +55,7 @@ app.use(express.static(__dirname+"/public"))
  */
 app.use('/api/sports', sportRouter)
 app.use('/api/sports/:sportId/leagues', leagueRouter)
-app.use('/api/sports/:sportId/leagues/:leageId/players', playerRouter)
+app.use('/api/sports/:sportId/leagues/:leagueId/players', playerRouter)
 
 /* Step 5
  *

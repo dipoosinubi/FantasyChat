@@ -1,14 +1,8 @@
 //Player model
 const mongoose = require('./connection.js')
-const ObjectId = mongoose.Schema.Types.ObjectId
-
 
 //create schema for each player
 const PlayerSchema = new mongoose.Schema({
-  leagueId: {
-     type: String,
-     require: true,
-  },
   teamName: {
     type: String,
     require: true,
@@ -17,21 +11,24 @@ const PlayerSchema = new mongoose.Schema({
   name: {
     type: String,
     default: "Preston Turner"
-  }
+  },
+  leagueId: {
+    type: mongoose.Types.ObjectId
+ },
 })
 //Name of the collection that stores player information
 const PlayerCollection = mongoose.model('player', PlayerSchema);
 
 //Get all for players for one league
-const getAllPlayers = (id) => {
-  return PlayerCollection.find({leagueId: id})
+const getAllPlayers = (leagueId) => {
+  return PlayerCollection.find({leagueId: leagueId})
 }
 // Get one Player
 const getPlayer = (playerId) => {
   return PlayerCollection.findById(playerId)
 }
 // create a Player
-const addNewPlayer = (leagueId, newPlayer) => {
+const addNewPlayer = (newPlayer,leagueId) => {
   newPlayer.leagueId = leagueId
   return PlayerCollection.create(newPlayer)
 }

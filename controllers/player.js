@@ -36,32 +36,37 @@ const playerRouter = express.Router({mergeParams:true})
  *
  * TODO: delete this handler; it's just a sample
  */
-//GET ALL MESSAGES
+//GET ALL PLAYERS
 playerRouter.get('/', (req, res) => {
   playerAPI.getAllPlayers(req.params.leagueId)
     .then(players => { res.json(players) })
+    .catch(err => console.log(err))
 })
 
-//  GET SINGLE MESSAGE
-playerRouter.get('/:messageId', (req, res) => {
-  playerAPI.getPlayer(req.params.messageId)
+//  GET SINGLE PLAYER
+playerRouter.get('/:playerId', (req, res) => {
+  playerAPI.getPlayer(req.params.playerId)
     .then(player => { res.send(player) })
+    .catch(err => console.log(err))
 })
-// POST NEW MESSAGE
+// POST NEW PLAYER
 playerRouter.post('/', (req, res) => {
-  console.log(`${req.params}`)
-  playerAPI.addNewPlayer(req.params.leagueId, req.body)
+  // console.log(`${req.params}`)
+  playerAPI.addNewPlayer( req.body, req.params.leagueId)
     .then((players) => { res.send(players) })
+    .catch(err => console.log(err))
 })
-// UPDATE MESSAGE
-playerRouter.put('/:messageId', (req, res) => {
-  playerAPI.updatePlayer(req.params.messageId, req.body)
+// UPDATE PLAYER
+playerRouter.put('/:playerId', (req, res) => {
+  playerAPI.updatePlayer(req.body,req.params.playerId )
     .then((player) => { res.send(player) })
+    .catch(err => console.log(err))
 })
-//DELETE MESSAGE
-playerRouter.delete('/:messageId', (req, res) => {
-  playerAPI.deletePlayer(req.params.messageId)
+//DELETE PLAYER
+playerRouter.delete('/:playerId', (req, res) => {
+  playerAPI.deletePlayer(req.params.playerId)
     .then( (player) => { res.send(player) })
+    .catch(err => console.log(err))
 })
 
 /* Step 6
